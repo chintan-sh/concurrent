@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="multithreading" default="all">
+  
+  
+  <property file="multithreading.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/RCS/**"/>
+    <exclude name="**/SCCS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/rcs/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.apk"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.7" value="${jdk.home.1.7}/bin"/>
+  <path id="jdk.classpath.1.7">
+    <fileset dir="${jdk.home.1.7}">
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/charsets.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/compilefontconfig.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/dnsns.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/icedtea-sound.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/java-atk-wrapper.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/localedata.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/sunjce_provider.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/sunpkcs11.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/ext/zipfs.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/javazic.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/jce.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/jsse.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/management-agent.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/resources.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/rhino.jar"/>
+      <include name="../java-1.7.0-openjdk-amd64/jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.7}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.7}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.7"/>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module Multithreading -->
+  
+  <dirname property="module.multithreading.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.multithreading" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.multithreading" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.multithreading" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.multithreading" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="multithreading.output.dir" value="${module.multithreading.basedir}/out/production/Multithreading"/>
+  <property name="multithreading.testoutput.dir" value="${module.multithreading.basedir}/out/test/Multithreading"/>
+  
+  <path id="multithreading.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="multithreading.module.production.classpath">
+    <path refid="${module.jdk.classpath.multithreading}"/>
+    <pathelement location="/multithreading/junit-4.7.jar"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  <path id="multithreading.runtime.production.module.classpath">
+    <pathelement location="${multithreading.output.dir}"/>
+    <pathelement location="/multithreading/junit-4.7.jar"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  <path id="multithreading.module.classpath">
+    <path refid="${module.jdk.classpath.multithreading}"/>
+    <pathelement location="${multithreading.output.dir}"/>
+    <pathelement location="/multithreading/junit-4.7.jar"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  <path id="multithreading.runtime.module.classpath">
+    <pathelement location="${multithreading.testoutput.dir}"/>
+    <pathelement location="${multithreading.output.dir}"/>
+    <pathelement location="/multithreading/junit-4.7.jar"/>
+    <pathelement location="${idea.home}/lib/hamcrest-core-1.3.jar"/>
+    <pathelement location="${idea.home}/lib/junit-4.12.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.multithreading">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.multithreading">
+    <patternset refid="excluded.from.module.multithreading"/>
+  </patternset>
+  
+  <path id="multithreading.module.sourcepath">
+    <dirset dir="${module.multithreading.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.multithreading" depends="compile.module.multithreading.production,compile.module.multithreading.tests" description="Compile module Multithreading"/>
+  
+  <target name="compile.module.multithreading.production" description="Compile module Multithreading; production classes">
+    <mkdir dir="${multithreading.output.dir}"/>
+    <javac destdir="${multithreading.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.multithreading}/javac">
+      <compilerarg line="${compiler.args.multithreading}"/>
+      <bootclasspath refid="multithreading.module.bootclasspath"/>
+      <classpath refid="multithreading.module.production.classpath"/>
+      <src refid="multithreading.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.multithreading"/>
+    </javac>
+    
+    <copy todir="${multithreading.output.dir}">
+      <fileset dir="/">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.multithreading.tests" depends="compile.module.multithreading.production" description="compile module Multithreading; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.multithreading" description="cleanup module">
+    <delete dir="${multithreading.output.dir}"/>
+    <delete dir="${multithreading.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.multithreading" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.multithreading" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
