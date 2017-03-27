@@ -89,16 +89,18 @@ public class Simulation {
 
 
 
-        /* ------------------------------------ Different Testing                 -------------- */
+        /*
+        ------------------------------------ Different Testing                 --------------
+
         System.out.println("\n TESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSTING \n");
-        System.out.println(" /* ------------------------------------ Different Testing                 -------------- */");
-        System.out.println(" /* ------------------------------------ Different Testing                 -------------- */");
-        System.out.println(" /* ------------------------------------ Different Testing                 -------------- */");
-        System.out.println(" /* ------------------------------------ Different Testing                 -------------- */");
-        System.out.println(" /* ------------------------------------ Different Testing                 -------------- */");
-        System.out.println(" /* ------------------------------------ Different Testing                 -------------- */");
-        System.out.println(" /* ------------------------------------ Different Testing                 -------------- */");
-        System.out.println(" /* ------------------------------------ Different Testing                 -------------- */");
+        System.out.println(" ------------------------------------ Different Testing                 -------------- ");
+        System.out.println(" ------------------------------------ Different Testing                 -------------- ");
+        System.out.println(" ------------------------------------ Different Testing                 -------------- ");
+        System.out.println(" ------------------------------------ Different Testing                 -------------- ");
+        System.out.println(" ------------------------------------ Different Testing                 -------------- ");
+        System.out.println(" ------------------------------------ Different Testing                 -------------- ");
+        System.out.println(" ------------------------------------ Different Testing                 -------------- ");
+        System.out.println(" ------------------------------------ Different Testing                 -------------- ");
         System.out.println("\n TESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSTING \n");
 
         nrSellers = 10; //Orig : 50
@@ -159,6 +161,6 @@ public class Simulation {
         }
 
         System.out.println("Sold item count recorded " + soldItemsRecorded +  " and actual sold items " + soldItems);
-        System.out.println("Revnue recorded " + revenueRecorded +  " and actual revenue found " + revenue);
+        System.out.println("Revnue recorded " + revenueRecorded +  " and actual revenue found " + revenue); */
     }
 }

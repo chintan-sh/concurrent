@@ -40,11 +40,11 @@ public class AuctionServer {
 	private int revenue = 0;
 
 	public int soldItemsCount() {
-		return this.soldItemsCount;
+			return this.soldItemsCount;
 	}
 
 	public int revenue() {
-		return this.revenue;
+			return this.revenue;
 	}
 
 
@@ -196,9 +196,23 @@ public class AuctionServer {
 		//		}
 		//
 		//		return currActiveList;
+
+//		synchronized(instanceLockA) {
+//			return itemsUpForBidding;
+//		}
+
+
 		synchronized(instanceLockA) {
-			return itemsUpForBidding;
+			List<Item> freshItemList = new ArrayList<>();
+			for (Item item : itemsUpForBidding) {
+				if (item.biddingOpen()) {
+					freshItemList.add(new Item(item.seller(), item.name(), item.listingID(), item.lowestBiddingPrice(),
+							item.biddingDurationMs()));
+				}
+			}
+			return freshItemList;
 		}
+
 	}
 
 
@@ -350,24 +364,26 @@ public class AuctionServer {
 	 * -1 if no <code>Item</code> exists
 	 */
 	public int itemPrice(int listingID) {
-		// See if the item exists.
-		if(itemsAndIDs.containsKey(listingID)){
-			Item item = itemsAndIDs.get(listingID);
+		synchronized (instanceLockA) {
+			// See if the item exists.
+			if (itemsAndIDs.containsKey(listingID)) {
+				Item item = itemsAndIDs.get(listingID);
 
-			// Getting proper o/p even without this lock however, when used, performance is better and hence using
-			//synchronized(instanceLockB) {
-				// Get lowest price info
-				int currPrice = item.lowestBiddingPrice();
+				// Getting proper o/p even without this lock however, when used, performance is better and hence using
+				synchronized(instanceLockB) {
+					// Get lowest price info
+					int currPrice = item.lowestBiddingPrice();
 
-				// If item is already bid upon, get highest price
-				if (highestBids.containsKey(listingID)) {
-					currPrice = highestBids.get(listingID);
+					// If item is already bid upon, get highest price
+					if (highestBids.containsKey(listingID)) {
+						currPrice = highestBids.get(listingID);
+					}
+					return currPrice;
 				}
-				return currPrice;
-			//}
-		}
+			}
 
-		return -1;
+			return -1;
+		}
 	}
 
 	/**
