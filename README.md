@@ -1,4 +1,4 @@
-# ParallelAndConcurrentCodes
+# Parallelism & Concurrency
 
 Contains source code for various Parallel & Multithreaded concepts including :
 
